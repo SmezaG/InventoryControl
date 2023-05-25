@@ -1,7 +1,7 @@
 import random
 import os
 
-
+#El git funciona
 def menu():
     os.system ("cls") 
     print("1 - Mostrar inventario")
