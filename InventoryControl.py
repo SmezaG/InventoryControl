@@ -38,9 +38,20 @@ def EliminarProducto():
         if valor == producto:
             del inventario[producto]
             return
-        print("No se encontro el producto")
+    print("No se encontro el producto")
     EnterWait()
 
+def ActualizaCantidad():
+    os.system ("cls")
+    producto = input("Que producto quiere modificar?: ")
+    for valor in inventario.keys():
+        if valor == producto:
+            cantidad = input("Ingrese la nueva cantidad: ")
+            inventario[producto] = cantidad
+            return  
+       
+    print("No se encontro el producto")
+    EnterWait()
 
 valorMenu = 0
 inventario = {}
@@ -48,10 +59,18 @@ inventario = {}
 while valorMenu != 5:
     os.system ("cls")
     menu()
-    valorMenu = int(input("Ingrese el valor del menu: "))
+    try:
+        valorMenu = int(input("Ingrese el valor del menu: "))
+    except ValueError:
+        print("Debes introducir un número")
+        EnterWait()
+
+    
     if valorMenu == 1:
         mostrarInventario()
     elif valorMenu == 2:
         AgregarProducto()
     elif valorMenu == 3:
         EliminarProducto()
+    elif valorMenu == 4:
+        ActualizaCantidad()
